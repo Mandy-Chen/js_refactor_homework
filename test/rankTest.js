@@ -248,3 +248,45 @@ rankTest('voyage.zone not china and history.length>8 and voyage.length<=14', t =
   const result = voyageProfitFactor(voyage,history);
   t.is(result, 3);
 })
+rankTest('voyage.zone not china and history.length>8 and voyage.length>14', t => {
+  const voyage = {
+    zone: 'test',
+    length: 15,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    },{
+      zone: 'west-indies',
+      profit: 15,
+    },
+    {
+      zone: 'test',
+      profit: 7,
+    },{
+      zone: 'west-indies',
+      profit: 15,
+    },
+    {
+      zone: 'test',
+      profit: 7,
+    },{
+      zone: 'west-indies',
+      profit: 15,
+    },
+    {
+      zone: 'test',
+      profit: 7,
+    },{
+      zone: 'west-indies',
+      profit: 15,
+    },
+    {
+      zone: 'test',
+      profit: 7,
+    },
+  ];
+  const result = voyageProfitFactor(voyage,history);
+  t.is(result, 2);
+})
