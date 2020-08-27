@@ -39,15 +39,16 @@ function voyageProfitFactor(voyage, history) {
   }
 
   if (voyage.zone === 'china' && hasChina(history)) {
-    result = zoneIsChinaAndHasChina(result, history, voyage);
+    result += zoneIsChinaAndHasChina(history, voyage);
   }
   else {
-    result = NotHasChina(history, result, voyage);
+    result += NotHasChina(history, voyage);
   }
   return result;
 }
 
-function NotHasChina(history, result, voyage) {
+function NotHasChina(history, voyage) {
+  let result = 0;
   if (history.length > 8) {
     result += 1;
   }
@@ -57,8 +58,8 @@ function NotHasChina(history, result, voyage) {
   return result;
 }
 
-function zoneIsChinaAndHasChina(result, history, voyage) {
-  result += 3;
+function zoneIsChinaAndHasChina(history, voyage) {
+  let result = 3;
   if (history.length > 10) {
     result += 1;
   }
