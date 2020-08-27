@@ -111,6 +111,8 @@ rankTest('history.length>=5 and voyage.zone not china and history not include ch
   ];
   const result = captainHistoryRisk(voyage,history);
   t.is(result, 1);
+  const resultRating=rating(voyage,history);
+  t.is(resultRating, 'B');
 })
 
 rankTest('history.length<5 and voyage.zone is china and history include china', t => {
