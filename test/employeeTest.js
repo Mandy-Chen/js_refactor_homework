@@ -16,3 +16,13 @@ employeeTest('type is salesman', t => {
     const result = employee.toString();
     t.is(result, 'mandy (salesman)');
 })
+employeeTest('type is test', t => {
+    try {
+        let employee = new Employee('mandy', 'test');
+        employee.toString();
+        t.fail();
+    }
+    catch (e) {
+        t.is(e.message, 'Employee cannot be of type test');
+    }
+})
