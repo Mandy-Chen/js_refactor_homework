@@ -15,6 +15,7 @@ rankTest('voyage.length<=4 and voyage.zone not includes china or east-indies', t
     length: 4,
   };
   const result = voyageRisk(voyage);
+
   t.is(result, 1);
 })
 rankTest('voyage.length>4 and voyage.zone not includes china or east-indies', t => {
@@ -77,7 +78,9 @@ rankTest('history.length<5 and voyage.zone not china and history not include chi
     },
   ];
   const result = captainHistoryRisk(voyage,history);
+  const resultRating=rating(voyage,history);
   t.is(result, 5);
+  t.is(resultRating, 'B');
 })
 
 rankTest('history.length>=5 and voyage.zone not china and history not include china', t => {
