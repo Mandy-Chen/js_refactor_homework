@@ -25,7 +25,7 @@ function captainHistoryRisk(voyage, history) {
   if (history.length < 5) {
     result += 4;
   }
-  result += history.filter(v => v.profit < 0).length;
+  result += history.filter(voyage => voyage.profit < 0).length;
   if (voyage.zone === 'china' && hasChina(history)) {
     result -= 2;
   }
@@ -68,12 +68,14 @@ function rating(voyage, history) {
   const vpf = voyageProfitFactor(voyage, history);
   const vr = voyageRisk(voyage);
   const chr = captainHistoryRisk(voyage, history);
+  let result="";
   if (vpf * 3 > (vr + chr * 2)) {
-    return 'A';
+    result= 'A';
   }
   else {
-    return 'B';
+    result= 'B';
   }
+  return result;
 }
 
 module.exports = {
