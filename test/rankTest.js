@@ -415,6 +415,8 @@ rankTest('voyage.zone is china ,and history include china and history.length>8 a
   ];
   const result = voyageProfitFactor(voyage,history);
   t.is(result, 7);
+  const resultRating=rating(voyage,history);
+  t.is(resultRating, 'A');
 })
 
 rankTest('voyage.zone is east-indies and history.length<=8 and voyage.length<=14', t => {
@@ -455,6 +457,8 @@ rankTest('voyage.zone is east-indies and history.length<=8 and voyage.length<=14
   ];
   const result = voyageProfitFactor(voyage,history);
   t.is(result, 3);
+  const resultRating=rating(voyage,history);
+  t.is(resultRating, 'B');
 })
 
 rankTest('voyage.zone is east-indies and history.length>8 and voyage.length<=14', t => {
@@ -499,6 +503,8 @@ rankTest('voyage.zone is east-indies and history.length>8 and voyage.length<=14'
   ];
   const result = voyageProfitFactor(voyage,history);
   t.is(result, 4);
+  const resultRating=rating(voyage,history);
+  t.is(resultRating, 'B');
 })
 rankTest('voyage.zone is east-indies and history.length>8 and voyage.length>14', t => {
   const voyage = {
@@ -542,4 +548,6 @@ rankTest('voyage.zone is east-indies and history.length>8 and voyage.length>14',
   ];
   const result = voyageProfitFactor(voyage,history);
   t.is(result, 3);
+  const resultRating=rating(voyage,history);
+  t.is(resultRating, 'B');
 })
