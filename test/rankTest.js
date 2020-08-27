@@ -215,6 +215,8 @@ rankTest('voyage.zone not china ,and history not include china and history.lengt
   ];
   const result = voyageProfitFactor(voyage,history);
   t.is(result, 2);
+  const resultRating=rating(voyage,history);
+  t.is(resultRating, 'B');
 })
 
 rankTest('voyage.zone not china and history.length>8 and voyage.length<=14', t => {
