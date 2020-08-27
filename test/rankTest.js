@@ -180,8 +180,8 @@ rankTest('voyage.zone is china ,and history not include china and history.length
       profit: 7,
     },
   ];
-  const result = captainHistoryRisk(voyage,history);
-  t.is(result, 5);
+  const result = voyageProfitFactor(voyage,history);
+  t.is(result, 3);
 })
 
 rankTest('voyage.zone not china ,and history not include china and history.length<=8 and voyage.length<=14', t => {
@@ -202,6 +202,6 @@ rankTest('voyage.zone not china ,and history not include china and history.lengt
       profit: 7,
     },
   ];
-  const result = captainHistoryRisk(voyage,history);
-  t.is(result, 5);
+  const result = voyageProfitFactor(voyage,history);
+  t.is(result, 2);
 })
