@@ -43,3 +43,17 @@ deliveryTest('isRush is true', t => {
     t.is(result, 4);
 })
 
+deliveryTest('anOrder.deliveryState includes CT and isRush is false', t => {
+    const anOrder = {
+        deliveryState: 'CT',
+        placedOn: {
+            plusDays: function (day) {
+                return day;
+            }
+        }
+    };
+    const isRush = false;
+    const result = deliveryDate(anOrder, isRush);
+    t.is(result, 4);
+})
+
