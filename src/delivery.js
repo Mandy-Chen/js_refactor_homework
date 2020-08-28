@@ -3,29 +3,33 @@ function deliveryDate (anOrder, isRush) {
     return isRushDeliveryDate(anOrder);
   }
   else {
-    let deliveryTime;
-    if ([
-      'MA',
-      'CT',
-      'NY',
-    ].includes(anOrder.deliveryState)) {
-      deliveryTime = 2;
-    }
-    else if ([
-      'ME',
-      'NH',
-    ].includes(anOrder.deliveryState)) {
-      deliveryTime = 3;
-    }
-    else {
-      deliveryTime = 4;
-    }
-    return anOrder.placedOn.plusDays(2 + deliveryTime);
+    return isNotRushDeliveryDate(anOrder);
   }
 }
 module.exports = {
   deliveryDate,
 };
+function isNotRushDeliveryDate(anOrder) {
+  let deliveryTime;
+  if ([
+    'MA',
+    'CT',
+    'NY',
+  ].includes(anOrder.deliveryState)) {
+    deliveryTime = 2;
+  }
+  else if ([
+    'ME',
+    'NH',
+  ].includes(anOrder.deliveryState)) {
+    deliveryTime = 3;
+  }
+  else {
+    deliveryTime = 4;
+  }
+  return anOrder.placedOn.plusDays(2 + deliveryTime);
+}
+
 function isRushDeliveryDate(anOrder) {
   let deliveryTime;
   if ([
