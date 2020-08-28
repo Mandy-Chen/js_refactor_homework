@@ -1,8 +1,7 @@
 function deliveryDate (anOrder, isRush) {
   if (isRush) {
     return isRushDeliveryDate(anOrder);
-  }
-  else {
+  }else {
     return isNotRushDeliveryDate(anOrder);
   }
 }
@@ -11,11 +10,7 @@ module.exports = {
 };
 function isNotRushDeliveryDate(anOrder) {
   let deliveryTime;
-  if ([
-    'MA',
-    'CT',
-    'NY',
-  ].includes(anOrder.deliveryState)) {
+  if (IsIncludeMACTNY(anOrder)) {
     deliveryTime = 2;
   }
   else if ([
@@ -28,6 +23,14 @@ function isNotRushDeliveryDate(anOrder) {
     deliveryTime = 4;
   }
   return anOrder.placedOn.plusDays(2 + deliveryTime);
+}
+
+function IsIncludeMACTNY(anOrder) {
+  return [
+    'MA',
+    'CT',
+    'NY',
+  ].includes(anOrder.deliveryState);
 }
 
 function isRushDeliveryDate(anOrder) {
