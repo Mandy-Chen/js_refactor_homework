@@ -42,7 +42,7 @@ function voyageProfitFactor(voyage, history) {
     result += 1;
   }
 
-  if (voyage.zone === 'china' && hasChina(history)) {
+  if (IsChinaAndHasChina(voyage, history)) {
     result += zoneIsChinaAndHasChina(history, voyage);
   }
   else {
