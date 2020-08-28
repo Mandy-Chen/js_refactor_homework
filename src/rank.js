@@ -77,12 +77,7 @@ function rating(voyage, history) {
   const vr = voyageRisk(voyage);
   const chr = captainHistoryRisk(voyage, history);
   let result = "";
-  if (vpf * 3 > (vr + chr * 2)) {
-    result = 'A';
-  }
-  else {
-    result = 'B';
-  }
+  (vpf * 3 > (vr + chr * 2))?result = 'A':result = 'B';
   return result;
 }
 
