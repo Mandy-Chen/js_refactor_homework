@@ -34,16 +34,20 @@ function isRushDeliveryDate(anOrder) {
   if (IsIncludeMACT(anOrder)) {
     deliveryTime = 1;
   }
-  else if ([
-    'NY',
-    'NH',
-  ].includes(anOrder.deliveryState)) {
+  else if (IsIncludeNYNH(anOrder)) {
     deliveryTime = 2;
   }
   else {
     deliveryTime = 3;
   }
   return anOrder.placedOn.plusDays(1 + deliveryTime);
+}
+
+function IsIncludeNYNH(anOrder) {
+  return [
+    'NY',
+    'NH',
+  ].includes(anOrder.deliveryState);
 }
 
 function IsIncludeMACT(anOrder) {
