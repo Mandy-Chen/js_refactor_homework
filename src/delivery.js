@@ -13,16 +13,20 @@ function isNotRushDeliveryDate(anOrder) {
   if (IsIncludeMACTNY(anOrder)) {
     deliveryTime = 2;
   }
-  else if ([
-    'ME',
-    'NH',
-  ].includes(anOrder.deliveryState)) {
+  else if (IsIncludeMENH(anOrder)) {
     deliveryTime = 3;
   }
   else {
     deliveryTime = 4;
   }
   return anOrder.placedOn.plusDays(2 + deliveryTime);
+}
+
+function IsIncludeMENH(anOrder) {
+  return [
+    'ME',
+    'NH',
+  ].includes(anOrder.deliveryState);
 }
 
 function IsIncludeMACTNY(anOrder) {
