@@ -7,9 +7,7 @@ function printOwing(invoice) {
     outstanding += object.amount;
   }
 
-  // record due date
-  const today = new Date();
-  invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
+  recordDueDate(invoice);
 
   // print details
   let result = '***********************\n' +
@@ -25,3 +23,8 @@ function printOwing(invoice) {
 module.exports = {
   printOwing,
 };
+function recordDueDate(invoice) {
+  const today = new Date();
+  invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
+}
+
