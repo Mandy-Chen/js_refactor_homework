@@ -19,6 +19,7 @@ function printOwing(invoice) {
     `amount: ${outstanding}\n` +
     `amount: ${invoice.dueDate.toLocaleDateString()}\n`;
   console.log(result);
+  return result;
 }
 
 module.exports = {
