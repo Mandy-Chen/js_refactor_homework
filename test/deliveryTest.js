@@ -14,3 +14,18 @@ deliveryTest('deliveryState includes MA and isRush is true', t => {
     const result = deliveryDate(anOrder,isRush);
     t.is(result,2);
 })
+
+deliveryTest('anOrder.deliveryState includes NY and isRush is true', t => {
+    const anOrder = {
+        deliveryState:'NY',
+        placedOn: {
+            plusDays: function (day) {
+                return day;
+            }
+        }
+    };
+    const isRush = true;
+    const result = deliveryDate(anOrder,isRush);
+    t.is(result,3);
+})
+
