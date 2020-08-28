@@ -5,9 +5,7 @@ function deliveryDate(anOrder, isRush) {
     return isNotRushDeliveryDate(anOrder);
   }
 }
-module.exports = {
-  deliveryDate,
-};
+
 function isNotRushDeliveryDate(anOrder) {
   let deliveryTime;
   IsIncludeMACTNY(anOrder) ? deliveryTime = 2 : (IsIncludeMENH(anOrder) ? deliveryTime = 3 : deliveryTime = 4)
@@ -31,15 +29,7 @@ function IsIncludeMACTNY(anOrder) {
 
 function isRushDeliveryDate(anOrder) {
   let deliveryTime;
-  if (IsIncludeMACT(anOrder)) {
-    deliveryTime = 1;
-  }
-  else if (IsIncludeNYNH(anOrder)) {
-    deliveryTime = 2;
-  }
-  else {
-    deliveryTime = 3;
-  }
+  IsIncludeMACT(anOrder)?deliveryTime = 1:(IsIncludeNYNH(anOrder)?deliveryTime = 2:deliveryTime = 3)
   return anOrder.placedOn.plusDays(1 + deliveryTime);
 }
 
@@ -57,3 +47,6 @@ function IsIncludeMACT(anOrder) {
   ].includes(anOrder.deliveryState);
 }
 
+module.exports = {
+  deliveryDate,
+};
