@@ -31,10 +31,7 @@ function IsIncludeMACTNY(anOrder) {
 
 function isRushDeliveryDate(anOrder) {
   let deliveryTime;
-  if ([
-    'MA',
-    'CT',
-  ].includes(anOrder.deliveryState)) {
+  if (IsIncludeMACT(anOrder)) {
     deliveryTime = 1;
   }
   else if ([
@@ -47,5 +44,12 @@ function isRushDeliveryDate(anOrder) {
     deliveryTime = 3;
   }
   return anOrder.placedOn.plusDays(1 + deliveryTime);
+}
+
+function IsIncludeMACT(anOrder) {
+  return [
+    'MA',
+    'CT',
+  ].includes(anOrder.deliveryState);
 }
 
